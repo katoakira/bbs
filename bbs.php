@@ -85,7 +85,7 @@
 
 	<?php
 		// 投稿された内容を取得するSQLを作成して結果を取得
-		$sql = "SELECT * FROM `post` ORDER BY `creaated_at` DESC";
+		$sql = "SELECT * FROM `post` ORDER BY `created_at` DESC";
 		$result = mysqli_query($link, $sql);
 	?>
 
