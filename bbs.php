@@ -44,7 +44,7 @@
 			mysqli_query($link, $sql);
 
 			mysqli_close($link);
-			// 「このウェブページにはリダイレクトループが含まれています」とエラーが出る
+			
 			header('Location: http://' .$_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI']);
 		}
 	}
@@ -102,7 +102,6 @@
 	<?php endif; ?>
 
 	<?php
-	// mysqli_resultにbooleanでfalseが与えられてしまう。現在解法模索中。
 	//取得結果を解放して接続を閉じる
 	mysqli_free_result($result);
 	mysqli_close($link);
