@@ -11,7 +11,7 @@ $errors = array();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$name = null;
-	if (!isset($_POST['name']) || !strlen($_POST['name'])) {
+	if (!isset($_POST['name']) || !strlen($_POST['name']) > 0) {
 		$errors['name'] = '名前を入力してください';
 	} else if (strlen($_POST['name']) > 40) {
 		$errors['name'] = '名前は40文字以内で入力してください';
@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	}
 
 	$comment = null;
-	if (isset($_POST['comment']) || !strlen($_POST['comment'])) {
+	if (!isset($_POST['comment']) || !strlen($_POST['comment']) > 0) {
 		$errors['comment'] = 'ひとこと入力してください';
 	} else if (strlen($_POST['comment']) > 200) {
 		$errors['comment'] = 'ひとことは200文字以内で入力してください';
@@ -28,9 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		$comment = $_POST['comment'];
 	}
 
+
 	date_default_timezone_set('Asia/Manila');
 
-	if (count($errors === 0)) {
+	if (count($errors) === 0) {
 		$sql = "INSERT INTO `post` (`name`, `comment`, `created_at`) VALUES ('"
 			. mysqli_real_escape_string($link, $name) . "', '"
 			. mysqli_real_escape_string($link, $comment) . "', '"
@@ -70,8 +71,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		<input type="submit" name="submit" value="送信" />
 	</form>
 <?php 
-$sql = "SELECT * FROM `post` ORDER BY `created_at` DESC";
-$result = mysqli_query($link, $sql);
+	$sql = "SELECT * FROM `post` ORDER BY `created_at` DESC";
+	$result = mysqli_query($link, $sql);
 ?>
 
 <?php if ($result !== false && mysqli_num_rows($result)): ?>
