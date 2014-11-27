@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	<h1>ひとこと掲示板</h1>
 
 	<form action="02_bbs.php" method="post">
-		<?php if (count($errors)): ?>
+		<?php if (count($errors) > 0): ?>
 		<ul class="errors_list">
 			<?php foreach ($errors as $error): ?>
 			<li>
