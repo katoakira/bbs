@@ -23,17 +23,17 @@
 		<input type="submit" name="submit" value="送信" />
 	</form>
 
-
-<?php if (count($posts) > 0): ?>
-<ul>
-	<?php foreach ($posts as $post): ?>
-	<li>
-		<?php echo htmlspecialchars($post['name'], ENT_QUOTES, 'UTF-8'); ?>:
-		<?php echo htmlspecialchars($post['comment'], ENT_QUOTES, 'UTF-8'); ?>
-		- <?php echo htmlspecialchars($post['created_at'],ENT_QUOTES, 'UTF-8'); ?>
-	</li>
-	<?php endforeach; ?>
-</ul>
-<?php endif; ?>
+	<!-- 取得した結果の入った$postsを使って表示を行う -->
+	<?php if (count($posts) > 0): ?>
+	<ul>
+		<?php foreach ($posts as $post): ?>
+		<li>
+			<?php echo htmlspecialchars($post['name'], ENT_QUOTES, 'UTF-8'); ?>:
+			<?php echo htmlspecialchars($post['comment'], ENT_QUOTES, 'UTF-8'); ?>
+			- <?php echo htmlspecialchars($post['created_at'],ENT_QUOTES, 'UTF-8'); ?>
+		</li>
+		<?php endforeach; ?>
+	</ul>
+	<?php endif; ?>
 </body>
 </html>
